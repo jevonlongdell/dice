@@ -22,18 +22,18 @@ class MainActivity : AppCompatActivity() {
         val dicefaceTextView: TextView = findViewById(R.id.textViewDice)
 
         suspend fun rollthedice(){
-           // dicefaceTextView.textSize = Float(30.0)
+            dicefaceTextView.textSize = (30.0).toFloat()
             dicefaceTextView.text = "Rolling"
             rollButton.isEnabled = false
-            delay(800)
+            delay(600)
             val numDice = numDiceBox.text.toString().toInt()
             val randomvalues = (1..numDice).map { (0 until numSides).random() }
 
-            val textsize = 100.0 * 8.0 / numDice.toFloat()
-//            if (textsize > 150.0)
-//                val textsize = 150.0
-//            if (textsize < 8)
-//                val textsize = 8
+            var textsize = 80.0 * (8.0 / numDice.toFloat())
+            if (textsize > 100.0)
+                textsize = 100.0
+            if (textsize < 18.0)
+                textsize = 18.0
             dicefaceTextView.textSize= textsize.toFloat()
 
             dicefaceTextView.text = randomvalues.map {dicesymbols.get(it) } .joinToString("")
